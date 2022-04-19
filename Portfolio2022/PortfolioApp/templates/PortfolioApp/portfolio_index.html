@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +9,7 @@
     <meta name="description" content="" />
     <!--Usado por el search engine-->
     <!--links para ccs file y icono del website-->
-    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'PortfolioApp/style.css' %}" />
     <link href="" type="image/x-icon" rel="shortcut icon" />
     <link
       href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -45,25 +46,18 @@
     <section id="welcome-section" class="welcome-section">
       <h1>YourName</h1>
       <p>Rol or quote</p>
-      
+
       <div class="list-skills">
-        <a
-        href=""
-        target="_blank"
-        class="skills"
-        ><i class="fab fa-python"></i>Python</a>
-        <a
-        href=""
-        target="_blank"
-        class="skills"
-        ><i class="fab fa-python"></i>Python2</a>
-        <a
-        href=""
-        target="_blank"
-        class="skills"
-        ><i class="fab fa-python"></i>Python3</a>
+        <a href="" target="_blank" class="skills"
+          ><i class="fab fa-python"></i>Python</a
+        >
+        <a href="" target="_blank" class="skills"
+          ><i class="fab fa-python"></i>Python2</a
+        >
+        <a href="" target="_blank" class="skills"
+          ><i class="fab fa-python"></i>Python3</a
+        >
       </div>
-      
     </section>
     <!-- AboutEnd -->
     <!-- ProjectStart -->
@@ -79,24 +73,24 @@
           </p>
         </a> -->
         <a
-        href="https://codepen.io/julio-velezmoro/full/eYyPBJw" 
-        target="_blank"
-        class="project project-tile"
-      >
-        <img
-          class="project-image"
-          type="image/webp"
-          src="https://shots.codepen.io/julio-velezmoro/pen/eYyPBJw-320.webp?version=1650040633"
-          alt="project"
-        />
-        <p class="project-title">
-          <span class="code">&lt;</span>
-          Technical documentation
-          <span class="code">&#47;&gt;</span>
-        </p>
+          href="https://codepen.io/julio-velezmoro/full/eYyPBJw"
+          target="_blank"
+          class="project project-tile"
+        >
+          <img
+            class="project-image"
+            type="image/webp"
+            src="https://shots.codepen.io/julio-velezmoro/pen/eYyPBJw-320.webp?version=1650040633"
+            alt="project"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+            Technical documentation
+            <span class="code">&#47;&gt;</span>
+          </p>
         </a>
         <a
-          href="https://codepen.io/julio-velezmoro/full/PoEpzNb" 
+          href="https://codepen.io/julio-velezmoro/full/PoEpzNb"
           target="_blank"
           class="project project-tile"
         >
@@ -128,28 +122,16 @@
         <p>as a team</p>
       </div>
       <div class="contact-links">
-        <a
-          href=""
-          target="_blank"
-          class="btn contact-details"
+        <a href="" target="_blank" class="btn contact-details"
           ><i class="fab fa-facebook-square"></i> Facebook</a
         >
-        <a
-          id="profile-link"
-          href=""
-          target="_blank"
-          class="btn contact-details"
+        <a id="profile-link" href="" target="_blank" class="btn contact-details"
           ><i class="fab fa-github"></i> GitHub</a
         >
-        <a
-          href=""
-          target="_blank"
-          class="btn contact-details"
+        <a href="" target="_blank" class="btn contact-details"
           ><i class="fab fa-twitter"></i> Twitter</a
         >
-        <a href="" 
-           target="_blank"
-           class="btn contact-details"
+        <a href="" target="_blank" class="btn contact-details"
           ><i class="fas fa-at"></i> Send a mail</a
         >
         <a href="tel:976-12-91" class="btn contact-details"
@@ -161,7 +143,8 @@
     <!-- FooterStart -->
     <footer>
       <p>
-        **This is my first portfolio. All the projects are exercises from freecodecamp.
+        **This is my first portfolio. All the projects are exercises from
+        freecodecamp.
       </p>
       <p>
         &copy; Created by
