@@ -7,10 +7,10 @@ db.sqlite3
 ../venv/
 env/
 venv/
-amzfunnel/__pycache__
+Portfolio2022/__pycache__
 .env
 .venv
-static/
+# static/
 data/
 # Django stuff:
 *.log
