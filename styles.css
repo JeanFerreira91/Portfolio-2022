@@ -161,7 +161,7 @@ h1 {
   }
   
   .skills:hover{
-    transform: translatex(-8px);
+    transform: translateX(-8px);
   }
  
   /* Projects section */
