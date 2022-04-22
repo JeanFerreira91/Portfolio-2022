@@ -1,15 +1,22 @@
 import datetime
 
 from django.db import models
-from django.utils import timezone
-from pkg_resources import require
 
 # Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField('date published')
+    image = models.FilePathField(path='BlogApp/static/img', default='')
     body = models.TextField()
-    image = models.ImageField(upload_to='images/')
+    pub_date = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    categories = models.ManyToManyField("Category", related_name='posts')
 
     def __str__(self):
         return self.title
@@ -21,5 +28,15 @@ class BlogPost(models.Model):
         return self.pub_date.strftime('%b %e %Y')
     
     def was_published_recently(self):
-        now = timezone.now()
+        now = datetime.timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+
+
+class Comment(models.Model):
+    author = models.CharField(max_length=60)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey("BlogPost", on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.body[:60]
