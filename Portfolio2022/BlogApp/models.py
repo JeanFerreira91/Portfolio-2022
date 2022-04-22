@@ -1,4 +1,5 @@
 import datetime
+from distutils.command.upload import upload
 
 from django.db import models
 
@@ -12,7 +13,7 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
-    image = models.FilePathField(path='BlogApp/static/img', default='')
+    image = models.ImageField(default='', upload_to='BlogApp/static')
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
