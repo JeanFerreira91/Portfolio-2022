@@ -1,115 +1,81 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!--informacion general-->
-    <title></title>
-    <meta charset="utf-8" />
-    <!-- forma de describir que tipo de caracteres estan en la pagina utf-8 es para EN -->
-    <meta name="description" content="" />
-    <!--Usado por el search engine-->
-    <!--links para ccs file y icono del website-->
-    <link rel="stylesheet" type="text/css" href="{% static 'PortfolioApp/style.css' %}" />
-    <link href="" type="image/x-icon" rel="shortcut icon" />
-    <link
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      rel="stylesheet"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- NavStart  -->
-    <nav id="navbar" class="nav">
-      <ul class="nav-list">
-        <li>
-          <a href="#welcome-section">About</a>
-        </li>
-        <li>
-          <a href="#projects">Work</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- NavEnd -->
-    <!-- AboutStart -->
-    <section id="welcome-section" class="welcome-section">
-      <h1>Jeanpy Blog</h1>
-      <p>Welcome to my blog.</p>
 
-      <div class="list-skills">
-        <a href="" target="_blank" class="skills"
-          ><i class="fa fa-code"></i>HTML</a
-        >
-        <a href="" target="_blank" class="skills"
-          ><i class="fab fa-python" aria-hidden="true"></i>Python</a
-        >
-        <a href="" target="_blank" class="skills"
-          ><i class="fa fa-terminal"></i>Django</a
-        >
-      </div>
-    </section>
-    <!-- AboutEnd -->
+  {% block blog_presentation %}
+    <h1>Jeanpy Blog</h1>
+    <p>Welcome to my blog.</p>
+  {% endblock blog_presentation %}
+
+  {% block page_content %}
     <!-- ProjectStart -->
     <section id="projects" class="projects-section">
       <h2 class="projects-section-header">Latest Posts</h2>
+
       <div class="projects-grid">
-        <!--<a href="" target="_blank" class="project project-tile">
-          <img class="project-image" type="image/webp" src="" alt="project" /> 
-          <p class="project-title">
-            <span class="code">&lt;</span>
-            Nombre Del Proyecto
-            <span class="code">&#47;&gt;</span>
-          </p>
-        </a> -->
-        {% for post in latest_posts_list %}
-          <a
-            href="{% url 'BlogApp:blog_detail' post.pk %}"
-            class="project project-tile"
-          >
-            <img
-              class="project-image"
-              type="image/webp"
-              src="{% static post.image %}"
-              alt="project"
-            />
-            <p class="project-title">
-              <span class="code">&lt;</span>
-              {{ post.title }}
-              <span class="code">&#47;&gt;</span>
-            </p>
-            <p>
-              {{ post.pub_date_pretty }}
-            </p>
-          </a>
-        {% endfor %}
-        {% comment %} <a
-          href="https://codepen.io/julio-velezmoro/full/PoEpzNb"
-          target="_blank"
-          class="project project-tile"
+      {% for post in latest_posts_list %}
+        <a
+          href="{% url 'BlogApp:blog_detail' post.pk %}"
+          class="project project-title"
         >
           <img
             class="project-image"
             type="image/webp"
-            src="https://shots.codepen.io/julio-velezmoro/pen/PoEpzNb-320.webp?version=1650039296"
-            alt="project"
+            src="{% static post.image %}"
+            alt="Blog project image"
           />
           <p class="project-title">
             <span class="code">&lt;</span>
-            Survey Form
+              {{ post.title }}
             <span class="code">&#47;&gt;</span>
           </p>
-        </a> {% endcomment %}
+          <p class="project-summary">
+            {{ post.summary }}
+          </p>
+          <p class="project-date">
+            {{ post.pub_date_pretty }}
+          </p>
+        </a>
+      {% endfor %}
+    </div>
+      <br/>
+      <a
+        href="https://github.com/JeanFerreira91"
+        class="btn btn-show-all"
+        target="_blank"
+        >Show all<i class="fas fa-chevron-right"></i>
+      </a>
+    </section>
+    {% endblock page_content %}
+
+
+
+  
+    {% comment %}
+    New Page Content
+    {% endcomment %}
+    {% block page_content_2 %}
+    <section id="projects" class="projects-section">
+      <h2 class="projects-section-header">Latest Posts</h2>
+      <div class="container">
+        {% for blog_post in latest_posts_list %}
+          <div class="col-md-8">
+            <div class="card">
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <img class="img-fluid z-depth-1" src="{% static blog_post.image %}" alt="Blog Post Image">
+                </div>
+              </div>
+              <h2><a href="{% url 'BlogApp:blog_detail' blog_post.pk %}">{{ blog_post.title }}</a></h2>
+              <p>{{ blog_post.pub_date_pretty }}</p>
+              <p>{{ blog_post.body | slice:':100' }}...</p>
+              <button type="button" class="btn-sm btn-outline-info btn-link">
+                <a href="{% url 'BlogApp:blog_detail' blog_post.pk %}">
+                  Read More
+                </a>
+              </button>
+            </div>
+          </div>
+        {% endfor %}
       </div>
       <a
         href="https://github.com/JeanFerreira91"
@@ -118,45 +84,4 @@
         >Show all<i class="fas fa-chevron-right"></i>
       </a>
     </section>
-    <!-- ProjectEnd -->
-    <!-- ContactStart -->
-    <section id="contact" class="contact-section">
-      <div class="contact-section-header">
-        <h2>Let's work together...</h2>
-        <p>as a team</p>
-      </div>
-      <div class="contact-links">
-        <a href="" target="_blank" class="btn contact-details"
-          ><i class="fab fa-facebook-square"></i> Facebook</a
-        >
-        <a id="profile-link" href="" target="_blank" class="btn contact-details"
-          ><i class="fab fa-github"></i> GitHub</a
-        >
-        <a href="" target="_blank" class="btn contact-details"
-          ><i class="fab fa-twitter"></i> Twitter</a
-        >
-        <a href="" target="_blank" class="btn contact-details"
-          ><i class="fas fa-at"></i> Send a mail</a
-        >
-        <a href="tel:976-12-91" class="btn contact-details"
-          ><i class="fas fa-mobile-alt"></i> Call me</a
-        >
-      </div>
-    </section>
-    <!-- ContactEnd -->
-    <!-- FooterStart -->
-    <footer>
-      <p>
-        **This is my first portfolio. All the projects are exercises from
-        freecodecamp.
-      </p>
-      <p>
-        &copy; Created by
-        <a href="https://github.com/Lakorthus" target="_blank"
-          >Julio Velezmoro <i class="fab fa-hammer"></i
-        ></a>
-      </p>
-    </footer>
-    <!-- FooterEnd -->
-  </body>
-</html>
+    {% endblock page_content_2 %}
