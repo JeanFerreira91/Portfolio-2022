@@ -31,13 +31,16 @@
     <nav id="navbar" class="nav">
       <ul class="nav-list">
         <li>
-          <a href="#welcome-section">About</a>
+          <a href="{% url 'PortfolioApp:portfolio' %}#welcome-section">About</a>
         </li>
         <li>
-          <a href="#projects">Work</a>
+          <a href="{% url 'PortfolioApp:portfolio' %}#projects">Work</a>
         </li>
         <li>
-          <a href="#contact">Contact</a>
+          <a href="{% url 'PortfolioApp:portfolio' %}#contact">Contact</a>
+        </li>
+        <li>
+          <a href="{% url 'BlogApp:blog_index' %}#welcome-section">Blog</a>
         </li>
       </ul>
     </nav>
@@ -45,6 +48,7 @@
     <!-- AboutStart -->
     <section id="welcome-section" class="welcome-section">
       {% block blog_presentation %}{% endblock blog_presentation %}
+      {% block portfolio_presentation %}{% endblock portfolio_presentation %}
       <div class="list-skills">
         <a href="" target="_blank" class="skills"
           ><i class="fa fa-code"></i></a
@@ -60,6 +64,7 @@
     <!-- AboutEnd -->
 
     {% block page_content %}{% endblock page_content %}
+    {% block portfolio_projects %}{% endblock portfolio_projects %}
 
     <!-- ContactStart -->
     <section id="contact" class="contact-section">
