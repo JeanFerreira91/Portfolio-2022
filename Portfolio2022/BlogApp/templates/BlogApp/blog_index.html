@@ -14,7 +14,7 @@
       <div class="projects-grid">
       {% for post in latest_posts_list %}
         <a
-          href="{% url 'BlogApp:blog_detail' post.pk %}"
+          href="{% url 'BlogApp:blog_detail' post.pk %}#projects"
           class="project project-title"
         >
           <img
@@ -33,6 +33,12 @@
           </p>
           <p class="project-date">
             {{ post.pub_date_pretty }}
+          </p>
+          <p class="project-categories">
+            Categories: 
+            {% for category in post.categories.all %}
+              {{ category.name }}
+            {% endfor %}
           </p>
         </a>
       {% endfor %}

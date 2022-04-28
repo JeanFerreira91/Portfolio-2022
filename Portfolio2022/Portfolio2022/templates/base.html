@@ -40,7 +40,7 @@
           <a href="{% url 'PortfolioApp:portfolio' %}#contact">Contact</a>
         </li>
         <li>
-          <a href="{% url 'BlogApp:blog_index' %}#welcome-section">Blog</a>
+          <a href="{% url 'BlogApp:blog_index' %}#projects">Blog</a>
         </li>
       </ul>
     </nav>
@@ -49,6 +49,7 @@
     <section id="welcome-section" class="welcome-section">
       {% block blog_presentation %}{% endblock blog_presentation %}
       {% block portfolio_presentation %}{% endblock portfolio_presentation %}
+      {% block blog__detail_presentation %}{% endblock blog__detail_presentation %}
       <div class="list-skills">
         <a href="" target="_blank" class="skills"
           ><i class="fa fa-code"></i></a
@@ -65,6 +66,7 @@
 
     {% block page_content %}{% endblock page_content %}
     {% block portfolio_projects %}{% endblock portfolio_projects %}
+    {% block blog_detail %} {% endblock blog_detail %}
 
     <!-- ContactStart -->
     <section id="contact" class="contact-section">

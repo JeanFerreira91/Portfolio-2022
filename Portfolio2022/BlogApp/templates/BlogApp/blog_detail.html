@@ -1,6 +1,24 @@
-<h1>
-    {{ blog_post.title }}
-</h1>
-<p>
-    {{ blog_post.body }}
-</p>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block blog__detail_presentation %}
+    <h1>Jeanpy Blog</h1>
+{% endblock blog__detail_presentation %}
+
+{% block blog_detail %}
+    <!-- ProjectStart -->
+    <section id="projects" class="projects-section">
+        <h2 class="projects-section-header">{{ post.title }}</h2>
+        
+        <div class="projects-grid-detail">
+            <img src="{% static post.image %}" alt="Blog Post Image" class="blog-detail-image">
+            <p class="blog-detail-date">{{ post.pub_date_pretty }}</p>
+            <p class="blog-detail-body">{{ post.body }}</p>
+        </div>
+        <a
+        href="{% url 'BlogApp:blog_index' %}#projects"
+        class="btn btn-show-all"
+        >Back to Blog<i class="fas fa-chevron-right"></i>
+      </a>
+    </section>
+{% endblock blog_detail %}
