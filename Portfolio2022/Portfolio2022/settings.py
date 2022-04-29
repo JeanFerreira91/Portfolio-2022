@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BlogApp.apps.BlogappConfig',
     'PortfolioApp.apps.PortfolioappConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+            ]),
+    },
+}

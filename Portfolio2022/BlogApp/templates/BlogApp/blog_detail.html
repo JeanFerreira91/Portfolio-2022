@@ -11,9 +11,13 @@
         <h2 class="projects-section-header">{{ post.title }}</h2>
         
         <div class="projects-grid-detail">
-            <img src="{% static post.image %}" alt="Blog Post Image" class="blog-detail-image">
-            <p class="blog-detail-date">{{ post.pub_date_pretty }}</p>
-            <p class="blog-detail-body">{{ post.body }}</p>
+            <div>
+                <img src="{% static post.image %}" alt="Blog Post Image" class="blog-detail-image">
+                <p class="blog-detail-date">{{ post.pub_date_pretty }}</p>
+            </div>
+            <div class="blog-detail-body">
+                    <p>{{ post.body|safe }}</p>
+            </div>
         </div>
         <a
         href="{% url 'BlogApp:blog_index' %}#projects"

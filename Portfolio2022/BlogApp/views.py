@@ -6,7 +6,7 @@ from BlogApp.forms import CommentForm
 
 # Create your views here.
 def blog_index(request):
-    latest_posts_list = BlogPost.objects.order_by('-pub_date')[:5]
+    latest_posts_list = BlogPostRich.objects.order_by('-pub_date')[:5]
     context = {
         'latest_posts_list': latest_posts_list,
     }
@@ -23,8 +23,8 @@ def blog_category(request, category):
 
 
 def blog_detail(request, pk):
-    post = BlogPost.objects.get(pk=pk)
-    comments = Comment.objects.filter(post=post)
+    post = BlogPostRich.objects.get(pk=pk)
+    # comments = Comment.objects.filter(post=post)
 
     form = CommentForm()
     if request.method == "POST":
@@ -39,7 +39,7 @@ def blog_detail(request, pk):
 
     context = {
         'post': post,
-        'comments': comments,
+        # 'comments': comments,
         'form': form,
     }
     return render(request, 'BlogApp/blog_detail.html', context)
