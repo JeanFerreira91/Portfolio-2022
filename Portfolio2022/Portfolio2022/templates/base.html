@@ -10,10 +10,11 @@
     <!--Usado por el search engine-->
     <!--links para ccs file y icono del website-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'ckeditor/ckeditor/contents.css' %}"/> {% endcomment %}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+     <!-- highlight js -->
+     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/monokai-sublime.min.css">
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
     <link href="" type="image/x-icon" rel="shortcut icon" />
     <link
       href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -54,6 +55,7 @@
       {% block blog_presentation %}{% endblock blog_presentation %}
       {% block portfolio_presentation %}{% endblock portfolio_presentation %}
       {% block blog__detail_presentation %}{% endblock blog__detail_presentation %}
+      {% block blog__category_presentation %}{% endblock blog__category_presentation %}
       <div class="list-skills">
         <a href="" target="_blank" class="skills"
           ><i class="fa fa-code"></i></a
@@ -71,40 +73,40 @@
     {% block page_content %}{% endblock page_content %}
     {% block portfolio_projects %}{% endblock portfolio_projects %}
     {% block blog_detail %} {% endblock blog_detail %}
+    {% block blog_category_content %}{% endblock blog_category_content %}
 
     <!-- ContactStart -->
     <section id="contact" class="contact-section">
       <div class="contact-section-header">
-        <h2>Let's work together...</h2>
+        <h2>Let's learn together...</h2>
         <p>as a team</p>
       </div>
       <div class="contact-links">
-        <a href="" target="_blank" class="btn contact-details"
+        {% comment %} <a href="" target="_blank" class="btn contact-details"
           ><i class="fab fa-facebook-square"></i> Facebook</a
-        >
-        <a id="profile-link" href="" target="_blank" class="btn contact-details"
+        > {% endcomment %}
+        <a id="profile-link" href="https://github.com/JeanFerreira91" target="_blank" class="btn contact-details"
           ><i class="fab fa-github"></i> GitHub</a
         >
-        <a href="" target="_blank" class="btn contact-details"
+        <a href="https://twitter.com/DeveloperJeanpy" target="_blank" class="btn contact-details"
           ><i class="fab fa-twitter"></i> Twitter</a
         >
-        <a href="" target="_blank" class="btn contact-details"
+        {% comment %} <a href="" target="_blank" class="btn contact-details"
           ><i class="fas fa-at"></i> Send a mail</a
         >
         <a href="tel:976-12-91" class="btn contact-details"
           ><i class="fas fa-mobile-alt"></i> Call me</a
-        >
+        > {% endcomment %}
       </div>
     </section>
     <!-- ContactEnd -->
     <!-- FooterStart -->
     <footer>
       <p>
-        **This is my first portfolio. All the projects are exercises from
-        freecodecamp.
+        **This is my portfolio.
       </p>
       <p>
-        &copy; Created by
+        &copy; Template created by
         <a href="https://github.com/Lakorthus" target="_blank"
           >Julio Velezmoro <i class="fab fa-hammer"></i
         ></a>

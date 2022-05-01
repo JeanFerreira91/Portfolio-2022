@@ -16,7 +16,7 @@ class Category(models.Model):
 class BlogPost(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(default='', upload_to='BlogApp/static')
-    body = models.TextField()
+    body = RichTextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField("Category", related_name='posts')
@@ -33,26 +33,7 @@ class BlogPost(models.Model):
     def was_published_recently(self):
         now = datetime.timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
-    
-class BlogPostRich(models.Model):
-    title = models.CharField(max_length=255)
-    image = models.ImageField(default='', upload_to='BlogApp/static')
-    body = RichTextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.title
-
-    def summary(self):
-        return self.body[:280]
-
-    def pub_date_pretty(self):
-        return self.pub_date.strftime('%b %e %Y')
-    
-    def was_published_recently(self):
-        now = datetime.timezone.now()
-        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 class Comment(models.Model):
     author = models.CharField(max_length=60)

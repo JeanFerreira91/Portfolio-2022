@@ -1,5 +1,5 @@
 from django.contrib import admin
-from BlogApp.models import BlogPost, BlogPostRich, Category, Comment
+from BlogApp.models import BlogPost, Category, Comment
 
 # Register your models here.
 class BlogPostAdmin(admin.ModelAdmin):
@@ -19,7 +19,6 @@ class BlogCommentAdmin(admin.ModelAdmin):
     ordering = ['-created_on']
     
 admin.site.register(BlogPost, BlogPostAdmin)
-admin.site.register(BlogPostRich, BlogPostRichAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, BlogCommentAdmin)
 # admin.site.header = 'JeanPy BlogApp Admin'

@@ -1,1 +1,56 @@
-<h1>This is your Blog Category Page</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block blog__category_presentation %}
+    <h1>Jeanpy Blog</h1>
+    <p>You are now looking at the category section of my Blog.</p>
+  {% endblock blog__category_presentation %}
+
+  {% block blog_category_content %}
+    <!-- ProjectStart -->
+    <section id="projects" class="projects-section">
+      <h2 class="projects-section-header">Blog Categories</h2>
+
+      <div class="projects-grid">
+      {% for post in posts %}
+        <a
+          href="{% url 'BlogApp:blog_detail' post.pk %}#projects"
+          class="project project-title"
+        >
+          <img
+            class="project-image"
+            type="image/webp"
+            src="{% static post.image %}"
+            alt="Blog project image"
+          />
+          <p class="project-title">
+            <span class="code">&lt;</span>
+              {{ post.title }}
+            <span class="code">&#47;&gt;</span>
+          </p>
+          <p class="project-summary">
+            {{ post.summary|safe }}
+          </p>
+          <p class="project-date">
+            {{ post.pub_date_pretty }}
+          </p>
+          <p class="project-categories">
+            Categories: 
+            {% for category in post.categories.all %}
+              {{ category.name }}
+            {% endfor %}
+          </p>
+        </a>
+        {% empty %}
+        <p>Sorry, no category found.</p>
+      {% endfor %}
+    </div>
+      <br/>
+      <a
+        href="https://github.com/JeanFerreira91"
+        class="btn btn-show-all"
+        target="_blank"
+        >Show all<i class="fas fa-chevron-right"></i>
+      </a>
+    </section>
+    {% endblock blog_category_content %}
