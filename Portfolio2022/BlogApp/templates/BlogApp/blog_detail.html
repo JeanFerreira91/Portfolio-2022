@@ -25,6 +25,17 @@
         >Back to Blog<i class="fas fa-chevron-right"></i>
         </a>
         <div class="blog-detail-comments">
+            <h2>Leave a comment:</h2>
+            <form action="/blog/{{  post.pk }}/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.author }}
+                </div>
+                <div class="form-group">
+                    {{ form.body }}
+                </div>
+                <button type="submit" class="btn blog-detail-button">Submit</button>
+            </form>
             <h2>Comments:</h2>
             {% for comment in comments %}
                 <hr>
