@@ -23,6 +23,17 @@
         href="{% url 'BlogApp:blog_index' %}#projects"
         class="btn btn-show-all"
         >Back to Blog<i class="fas fa-chevron-right"></i>
-      </a>
+        </a>
+        <div class="blog-detail-comments">
+            <h2>Comments:</h2>
+            {% for comment in comments %}
+                <hr>
+                <p>Name: {{ comment.author }}</p>
+                <p>Comment: {{ comment.body }}</p>
+                <p>Date: {{ comment.created_on }}</p>
+                {% empty %}
+                <p>No comments yet!</p>
+            {% endfor %}
+        </div>
     </section>
 {% endblock blog_detail %}
