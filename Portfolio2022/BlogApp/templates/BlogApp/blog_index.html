@@ -32,12 +32,12 @@
             {{ post.summary|safe }}
           </p>
           <p class="project-date">
-            {{ post.pub_date_pretty }}
+            {{ post.pub_date_pretty|striptags }}
           </p>
           <p class="project-categories">
             Categories: 
             {% for category in post.categories.all %}
-              {{ category.name }}
+              {{ category.name|striptags }}
             {% endfor %}
           </p>
         </a>
@@ -52,42 +52,3 @@
       </a>
     </section>
     {% endblock page_content %}
-
-
-
-  
-    {% comment %}
-    New Page Content
-    {% endcomment %}
-    {% block page_content_2 %}
-    <section id="projects" class="projects-section">
-      <h2 class="projects-section-header">Latest Posts</h2>
-      <div class="container">
-        {% for blog_post in latest_posts_list %}
-          <div class="col-md-8">
-            <div class="card">
-              <div class="row">
-                <div class="col-md-12 mb-3">
-                  <img class="img-fluid z-depth-1" src="{% static blog_post.image %}" alt="Blog Post Image">
-                </div>
-              </div>
-              <h2><a href="{% url 'BlogApp:blog_detail' blog_post.pk %}">{{ blog_post.title }}</a></h2>
-              <p>{{ blog_post.pub_date_pretty }}</p>
-              <p>{{ blog_post.body | slice:':100' }}...</p>
-              <button type="button" class="btn-sm btn-outline-info btn-link">
-                <a href="{% url 'BlogApp:blog_detail' blog_post.pk %}">
-                  Read More
-                </a>
-              </button>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-      <a
-        href="https://github.com/JeanFerreira91"
-        class="btn btn-show-all"
-        target="_blank"
-        >Show all<i class="fas fa-chevron-right"></i>
-      </a>
-    </section>
-    {% endblock page_content_2 %}
