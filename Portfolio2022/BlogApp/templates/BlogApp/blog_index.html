@@ -28,17 +28,17 @@
               {{ post.title }}
             <span class="code">&#47;&gt;</span>
           </p>
-          <p class="project-summary">
-            {{ post.summary|safe }}
-          </p>
           <p class="project-date">
-            {{ post.pub_date_pretty|striptags }}
+            {{ post.pub_date_pretty }}
           </p>
+          {% comment %} <p class="project-summary" id="django">
+            {{ post.summary|safe }}
+          </p>  {% endcomment %}
           <p class="project-categories">
             Categories: 
-            {% for category in post.categories.all %}
-              {{ category.name|striptags }}
-            {% endfor %}
+          {% for category in post.categories.all %}
+            {{ category.name }}
+          {% endfor %}
           </p>
         </a>
       {% endfor %}
