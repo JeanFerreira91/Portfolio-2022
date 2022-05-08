@@ -36,16 +36,15 @@
                 </div>
                 <button type="submit" class="btn blog-detail-button">Submit</button>
             </form>
-            <h2>Comments:</h2>
-            {% for comment in comments %}
-                <hr>
-                <p>Name: {{ comment.author }}</p>
-                <p>Comment: {{ comment.body }}</p>
-                <p>Date: {{ comment.created_on }}</p>
-                {% empty %}
-                <p>No comments yet!</p>
-                <br />
-            {% endfor %}
+                <h2>Comments:</h2>
+                {% for comment in comments %}
+                    <hr>
+                    <p>Name: {{ comment.author }}</p>
+                    <p>Comment: {{ comment.body }}</p>
+                    <p>Date: {{ comment.created_on }}</p>
+                    {% empty %}
+                    <p class="blog-comments-empty">No comments yet!</p>
+                {% endfor %}
         </div>
     </section>
 {% endblock blog_detail %}
