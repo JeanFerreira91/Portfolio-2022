@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block blog__category_presentation %}
+    <h1>Jeanpy Blog</h1>
+    <p>You are now looking at the category section of my Blog.</p>
+  {% endblock blog__category_presentation %}
+
+  {% block blog_category_content %}
+    <!-- ProjectStart -->
+    <section id="projects" class="projects-section">
+      <h2 class="projects-section-header">Blog Categories</h2>
+
+      <div class="projects-grid">
+        <p class="project-categories"> 
+            {% for category in categories %}
+            <a
+            href="{% url 'BlogApp:blog_category_detail' category.name %}#projects"
+            class="btn btn-show-all"
+            >{{ category.name }}<i class="fas fa-chevron-right"></i>
+          </a>
+            {% endfor %}
+        </p>
+    </div>
+    </section>
+    {% endblock blog_category_content %}
