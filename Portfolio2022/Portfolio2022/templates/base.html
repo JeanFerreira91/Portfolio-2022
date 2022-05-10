@@ -34,23 +34,29 @@
   <body>
     <!-- NavStart  -->
     <nav id="navbar" class="nav">
-      <ul class="nav-list">
-        <li>
-          <a href="{% url 'PortfolioApp:portfolio' %}#welcome-section">About</a>
-        </li>
-        <li>
-          <a href="{% url 'PortfolioApp:portfolio' %}#projects">Work</a>
-        </li>
-        <li>
-          <a href="{% url 'PortfolioApp:portfolio' %}#contact">Contact</a>
-        </li>
-        <li>
-          <a href="{% url 'BlogApp:blog_index' %}#projects">Blog</a>
-        </li>
-        <li>
-          <a href="{% url 'BlogApp:blog_category_index' %}#projects">Categories</a>
-        </li>
-      </ul>
+      <div class="nav-list-portfolio">
+        <ul class="nav-list">
+          <li>
+            <a href="{% url 'PortfolioApp:portfolio' %}#welcome-section">About</a>
+          </li>
+          <li>
+            <a href="{% url 'PortfolioApp:portfolio' %}#projects">Work</a>
+          </li>
+          <li>
+            <a href="{% url 'PortfolioApp:portfolio' %}#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-list-blog">
+        <ul class="nav-list">
+          <li>
+            <a href="{% url 'BlogApp:blog_index' %}#projects">Blog</a>
+          </li>
+          <li>
+            <a href="{% url 'BlogApp:blog_category_index' %}#projects">Categories</a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <!-- NavEnd -->
     <!-- AboutStart -->
