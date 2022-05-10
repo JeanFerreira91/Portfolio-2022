@@ -1,5 +1,6 @@
 import datetime
 from distutils.command.upload import upload
+from tabnanny import verbose
 
 from django.db import models
 from django.db.models import Model
@@ -11,6 +12,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    # Customising the Admin Page
+    class Meta:
+        verbose_name_plural = 'Categories'
 
 
 class BlogPost(models.Model):
@@ -33,6 +38,10 @@ class BlogPost(models.Model):
     def was_published_recently(self):
         now = datetime.timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    
+    # Customising the Admin Page
+    class Meta:
+        verbose_name_plural = 'Blog Posts'
 
 
 class Comment(models.Model):
@@ -43,3 +52,7 @@ class Comment(models.Model):
     
     def __str__(self):
         return self.body[:60]
+    
+    # Customising the Admin Page
+    class Meta:
+        verbose_name_plural = 'Users Comments'

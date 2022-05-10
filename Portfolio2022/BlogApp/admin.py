@@ -5,18 +5,17 @@ from BlogApp.models import BlogPost, Category, Comment
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ['title', 'pub_date', 'last_modified']
     ordering = ['-pub_date']
-    
-class BlogPostRichAdmin(admin.ModelAdmin):
-    list_display = ['title', 'pub_date', 'last_modified']
-    ordering = ['-pub_date']
+    search_fields = ['title__icontains', 'body__icontains']
     
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
     ordering = ['name']
+    search_fields = ['name__icontains']
     
 class BlogCommentAdmin(admin.ModelAdmin):
     list_display = ['author', 'body', 'created_on']
     ordering = ['-created_on']
+    search_fields = ['author__icontains', 'body__icontains']
     
 admin.site.register(BlogPost, BlogPostAdmin)
 admin.site.register(Category, CategoryAdmin)
