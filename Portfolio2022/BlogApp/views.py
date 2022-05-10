@@ -13,17 +13,16 @@ def blog_index(request):
     return render(request, 'BlogApp/blog_index.html', context)
 
 
-def blog_category_index(request, category):
-    posts = BlogPost.objects.filter(categories__name__contains=category).order_by('-pub_date')
+def blog_category_index(request):
     categories = Category.objects.all()
     context = {
         'categories': categories,
-        'posts': posts,
     }
     return render(request, 'BlogApp/blog_category_index.html', context)
 
 def blog_category_detail(request, category):
     posts = BlogPost.objects.filter(categories__name__contains=category).order_by('-pub_date')
+    category = Category.objects.get(name=category)
     context = {
         'category': category,
         'posts': posts,

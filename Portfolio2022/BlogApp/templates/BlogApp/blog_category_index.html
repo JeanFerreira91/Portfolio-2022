@@ -22,5 +22,10 @@
             {% endfor %}
         </p>
     </div>
+    <a
+      href="{% url 'BlogApp:blog_index' %}#projects"
+      class="btn btn-show-all"
+      >Back to Blog<i class="fas fa-chevron-right"></i>
+    </a>
     </section>
     {% endblock blog_category_content %}

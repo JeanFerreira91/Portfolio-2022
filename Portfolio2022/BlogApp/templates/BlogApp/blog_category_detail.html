@@ -9,7 +9,7 @@
   {% block blog_category_content %}
     <!-- ProjectStart -->
     <section id="projects" class="projects-section">
-      <h2 class="projects-section-header">Blog Categories</h2>
+      <h2 class="projects-section-header">Category: {{ category.name }}</h2>
 
       <div class="projects-grid">
       {% for post in posts %}
@@ -39,15 +39,13 @@
           </p>
         </a>
         {% empty %}
-        <p>Sorry, no category found.</p>
+        <p>Sorry, no posts found under {{ category }} category.</p>
       {% endfor %}
     </div>
-      <br/>
       <a
-        href="https://github.com/JeanFerreira91"
+        href="{% url 'BlogApp:blog_category_index' %}#projects"
         class="btn btn-show-all"
-        target="_blank"
-        >Show all<i class="fas fa-chevron-right"></i>
+        >Back to Categories<i class="fas fa-chevron-right"></i>
       </a>
     </section>
     {% endblock blog_category_content %}
