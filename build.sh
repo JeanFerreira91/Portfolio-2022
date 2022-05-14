@@ -2,7 +2,6 @@
 # exit on error
 set -o errexit
 
-cd Portfolio2022
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
