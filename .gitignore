@@ -10,7 +10,7 @@ venv/
 Portfolio2022/__pycache__
 .env
 .venv
-static/
+# static/
 staticfiles/
 data/
 # Django stuff:
